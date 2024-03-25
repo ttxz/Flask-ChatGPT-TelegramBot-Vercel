@@ -102,7 +102,6 @@ def webhook_handler():
         print(update)
         # Update dispatcher process that handler to process this message
         dispatcher.process_update(update)
-        request.
     return 'ok'
 
 # 定义键盘按钮
