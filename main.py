@@ -94,12 +94,15 @@ updater = Updater(token=telegram_bot_token)
 
 @app.route('/callback', methods=['POST'])
 def webhook_handler():
+    jsonParams = request.get_json(force=True)
+    print("callback被调用，参数：", jsonParams)
     """Set route /hook with POST method will trigger this method."""
     if request.method == "POST":
-        update = telegram.Update.de_json(request.get_json(force=True), bot)
-
+        update = telegram.Update.de_json(jsonParams, bot)
+        print(update)
         # Update dispatcher process that handler to process this message
         dispatcher.process_update(update)
+        request.
     return 'ok'
 
 # 定义键盘按钮
